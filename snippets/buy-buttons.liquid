@@ -107,6 +107,11 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+          {%- if product.selected_or_first_available_variant.inventory_quantity < 5 -%}
+            {{ 'products.product.low_stack' | t }}
+          {%- else -%}
+            {{ 'products.product.available' | t }}
+          {%- endif -%}
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
