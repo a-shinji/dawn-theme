@@ -462,7 +462,17 @@
                 %}
 
               {%- when 'variant_picker' -%}
+                {% liquid
+                  assign size_s = product.metafields.custom.shirt_s
+                  assign size_m = product.metafields.custom.shirt_m
+                  assign size_l = product.metafields.custom.shirt_l
+                %}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                <div id="shirt-s" data-value="{{ size_s }}"></div>
+                <div id="shirt-m" data-value="{{ size_m }}"></div>
+                <div id="shirt-l" data-value="{{ size_l }}"></div>
+                <div id="size-description"></div>
+
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -717,6 +727,7 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
+    <script src="{{ 'product-variant-picker.js' | asset_url }}" defer></script>
   </div>
 </product-info>
 
