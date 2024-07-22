@@ -150,3 +150,7 @@ variant-selects {
   }
 }
 /* End custom styles for Swatch display type */
+
+#size-description {
+  text-align: center;
+}
